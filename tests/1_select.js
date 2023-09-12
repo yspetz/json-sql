@@ -582,7 +582,7 @@ describe('Select', function() {
 				expect(function() {
 					jsonSql.build({
 						table: 'users',
-						condition: {
+						where: {
 							name: {$wrong: 'John'}
 						}
 					});
@@ -592,7 +592,7 @@ describe('Select', function() {
 			it('should be ok with default operator(=)', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: 'John'
 					}
 				});
@@ -606,7 +606,7 @@ describe('Select', function() {
 			it('should be ok with `$eq` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$eq: 'John'}
 					}
 				});
@@ -620,7 +620,7 @@ describe('Select', function() {
 			it('should be ok with `$ne` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$ne: 'John'}
 					}
 				});
@@ -634,7 +634,7 @@ describe('Select', function() {
 			it('should be ok with `$gt` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$gt: 'John'}
 					}
 				});
@@ -648,7 +648,7 @@ describe('Select', function() {
 			it('should be ok with `$lt` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$lt: 'John'}
 					}
 				});
@@ -662,7 +662,7 @@ describe('Select', function() {
 			it('should be ok with `$gte` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$gte: 'John'}
 					}
 				});
@@ -676,7 +676,7 @@ describe('Select', function() {
 			it('should be ok with `$lte` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$lte: 'John'}
 					}
 				});
@@ -690,7 +690,7 @@ describe('Select', function() {
 			it('should be ok with `$is` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$is: null}
 					}
 				});
@@ -702,7 +702,7 @@ describe('Select', function() {
 			it('should be ok with `$isNot` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$isNot: null}
 					}
 				});
@@ -714,7 +714,7 @@ describe('Select', function() {
 			it('should be ok with `$like` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$like: 'John%'}
 					}
 				});
@@ -728,7 +728,7 @@ describe('Select', function() {
 			it('should be ok with `$null`:true operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$null: true}
 					}
 				});
@@ -740,7 +740,7 @@ describe('Select', function() {
 			it('should be ok with `$null`:false operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$null: false}
 					}
 				});
@@ -752,7 +752,7 @@ describe('Select', function() {
 			it('should be ok with `$field` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$field: 'name_2'}
 					}
 				});
@@ -764,7 +764,7 @@ describe('Select', function() {
 			it('should be ok with object `$field` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: {$field: {field: 'name_2'}}
 					}
 				});
@@ -776,7 +776,7 @@ describe('Select', function() {
 			it('should be ok with `$in` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$in: [12, 13, 14]}
 					}
 				});
@@ -788,7 +788,7 @@ describe('Select', function() {
 			it('should add `null` value with empty array in `$in` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$in: []}
 					}
 				});
@@ -800,7 +800,7 @@ describe('Select', function() {
 			it('should be ok with `$nin` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$nin: [12, 13, 14]}
 					}
 				});
@@ -812,7 +812,7 @@ describe('Select', function() {
 			it('should add `null` value with empty array in `$nin` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$nin: []}
 					}
 				});
@@ -824,7 +824,7 @@ describe('Select', function() {
 			it('should be ok with object subquery in `$in` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$in: {
 							table: 'test'
 						}}
@@ -839,7 +839,7 @@ describe('Select', function() {
 			it('should be ok with `query` subquery in `$in` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$in: {
 							query: {
 								table: 'test'
@@ -856,7 +856,7 @@ describe('Select', function() {
 			it('should be ok with `select` subquery in `$in` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$in: {
 							select: {
 								table: 'test'
@@ -873,7 +873,7 @@ describe('Select', function() {
 			it('should be ok with `$between` operator', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {$between: [12, 14]}
 					}
 				});
@@ -888,7 +888,7 @@ describe('Select', function() {
 				expect(function() {
 					jsonSql.build({
 						table: 'users',
-						condition: {
+						where: {
 							$wrong: [
 								{name: 'John'},
 								{age: 12}
@@ -901,7 +901,7 @@ describe('Select', function() {
 			it('should be ok with default logical operator(`$and`)', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						name: 'John',
 						age: 12
 					}
@@ -916,7 +916,7 @@ describe('Select', function() {
 			it('should be ok with default logical operator(`$and`) for one field', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						age: {
 							$gt: 5,
 							$lt: 15,
@@ -933,7 +933,7 @@ describe('Select', function() {
 			it('should be ok with array `$and`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$and: [
 							{name: 'John'},
 							{age: 12}
@@ -950,7 +950,7 @@ describe('Select', function() {
 			it('should be ok with object `$and`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$and: {
 							name: 'John',
 							age: 12
@@ -967,7 +967,7 @@ describe('Select', function() {
 			it('should be ok with array `$or`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$or: [
 							{name: 'John'},
 							{age: 12}
@@ -984,7 +984,7 @@ describe('Select', function() {
 			it('should be ok with object `$or`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$or: {
 							name: 'John',
 							age: 12
@@ -1001,7 +1001,7 @@ describe('Select', function() {
 			it('should be ok with array `$not`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$not: [
 							{name: 'John'},
 							{age: 12}
@@ -1019,7 +1019,7 @@ describe('Select', function() {
 			it('should be ok with object `$not`', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$not: {
 							name: 'John',
 							age: 12
@@ -1037,7 +1037,7 @@ describe('Select', function() {
 			it('should be ok with object [`$or`, `$or`]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: [{
+					where: [{
 						$or: {
 							name: 'John',
 							age: 12
@@ -1064,7 +1064,7 @@ describe('Select', function() {
 			it('should be ok with object `$and`:[`$or`, `$or`]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$and: [{
 							$or: {
 								name: 'John',
@@ -1093,7 +1093,7 @@ describe('Select', function() {
 			it('should be ok with object `$or`:[{},{}]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$or: [{
 							name: 'John',
 							age: 12
@@ -1118,7 +1118,7 @@ describe('Select', function() {
 			it('should be ok with object `$or`:[`$and`, `$and`]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$or: [{
 							$and: {
 								name: 'John',
@@ -1147,7 +1147,7 @@ describe('Select', function() {
 			it('should be ok with [{}, {}]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: [{
+					where: [{
 						name: 'John',
 						age: 12
 					}, {
@@ -1169,7 +1169,7 @@ describe('Select', function() {
 			it('should be ok with `$and`:[{}, {}]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$and: [{
 							name: 'John',
 							age: 12
@@ -1194,7 +1194,7 @@ describe('Select', function() {
 			it('should be ok with `$and`:[`$and`, `$and`]', function() {
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$and: [{
 							$and: {
 								name: 'John',
@@ -1225,7 +1225,7 @@ describe('Select', function() {
 				var date2 = new Date();
 				var result = jsonSql.build({
 					table: 'users',
-					condition: {
+					where: {
 						$or: [{
 							$or: {
 								name: 'John',

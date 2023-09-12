@@ -4,7 +4,7 @@ var jsonSql = require('../lib')();
 var expect = require('chai').expect;
 
 describe('Delete', function() {
-	it('should be ok without `condition` property', function() {
+	it('should be ok without `where` property', function() {
 		var result = jsonSql.build({
 			type: 'remove',
 			table: 'users'
@@ -14,11 +14,11 @@ describe('Delete', function() {
 		expect(result.values).to.be.eql({});
 	});
 
-	it('should be ok with `condition` property', function() {
+	it('should be ok with `where` property', function() {
 		var result = jsonSql.build({
 			type: 'remove',
 			table: 'users',
-			condition: {
+			where: {
 				a: 5
 			}
 		});

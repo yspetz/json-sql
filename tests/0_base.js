@@ -200,7 +200,7 @@ describe('Builder', function() {
 
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = $1;');
@@ -214,7 +214,7 @@ describe('Builder', function() {
 
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = @p1;');
@@ -224,7 +224,7 @@ describe('Builder', function() {
 	it('should return prefixed values with method `prefixValues`', function() {
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = @p1;');
@@ -235,7 +235,7 @@ describe('Builder', function() {
 	it('should return array values with method `getValuesArray`', function() {
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = @p1;');
@@ -253,7 +253,7 @@ describe('Builder', function() {
 
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = $1;');
@@ -282,7 +282,7 @@ describe('Builder', function() {
 
 		var result = jsonSql.build({
 			table: 'users',
-			condition: {name: 'John'}
+			where: {name: 'John'}
 		});
 
 		expect(result.query).to.be.equal('select * from "users" where "name" = $;');
