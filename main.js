@@ -117,6 +117,34 @@ let jsonQuery = {
 //     table: 'cool_table'
 // };
 
+jsonQuery = {
+    fields: [
+        {
+            case: {
+                when: [
+                    {
+                        condition: {
+                            a: { $gt: 5 },
+                            b: { $gt: 7 }
+                        },
+                        then: 9
+                    },
+                    {
+                        condition: {
+                            a: { $gt: 2 },
+                            b: { $gt: 4 }
+                        },
+                        then: 8
+                    },
+                ],
+                elseValue: 10
+            },
+            alias: 'cool_value'
+        }
+    ],
+    table: 'cool_table'
+};
+
 const sql = builder.build(jsonQuery);
 
 console.log(sql.query);
